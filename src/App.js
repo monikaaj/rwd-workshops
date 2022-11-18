@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const flexItems = [{
@@ -29,6 +29,7 @@ const gridItems = [{
 function App() {
   const [ showFlexboxDemo, setShowFlexboxDemo ] = useState(false);
   const [ showGridDemo, setShowGridDemo ] = useState(false);
+  const [ showMediaDemo, setShowMediaDemo ] = useState(false);
   const [ showMenu, setShowMenu ] = useState(false);
 
   return (
@@ -43,6 +44,13 @@ function App() {
         <label htmlFor='grid-demo'>Show Grid demo</label>
       </div>
 
+      <div className='input-wrapper'>
+        <input id='grid-demo' type='checkbox' onChange={() => setShowMediaDemo(!showGridDemo)} />
+        <label htmlFor='grid-demo'>Show Media demo</label>
+      </div>
+
+      {/* FLEX DEMO */}
+
       <div className='demo-wrapper'>
         {showFlexboxDemo && (
           <div className='container-layout flexbox-container'>
@@ -55,15 +63,11 @@ function App() {
         )}
       </div>
 
+      {/* END FLEX DEMO */}
+
+      {/* GRID DEMO */}
+
       <div className='demo-wrapper'>
-        <button className='sidebar-menu-btn' onClick={() => setShowMenu(!showMenu)}>{showMenu ? 'Hide menu' : 'Show menu'}</button>
-
-        {showMenu && (
-          <div className='sidebar-menu'>
-            SIDEBAR MENU
-          </div>
-        )}
-
         {showGridDemo && (
           <div className='container-layout grid-container'>
             {gridItems.map((item, index) => (
@@ -75,6 +79,10 @@ function App() {
         )}
       </div>
 
+      {/* END GRID DEMO */}
+
+      {/* MEDIA DEMO */}
+
       <div className='demo-wrapper'>
         <button className='sidebar-menu-btn' onClick={() => setShowMenu(!showMenu)}>{showMenu ? 'Hide menu' : 'Show menu'}</button>
 
@@ -84,16 +92,18 @@ function App() {
           </div>
         )}
 
-        {showGridDemo && (
-          <div className='container-layout grid-container'>
+        {showMediaDemo && (
+          <div className='container-layout media-grid-container'>
             {gridItems.map((item, index) => (
-              <div key={`${index}-${item.color}`} className={`grid-item grid-item-${index}`} style={{'backgroundColor': item.color}} >
+              <div key={`${index}-${item.color}`} className={`media-grid-item media-grid-item-${index}`} style={{'backgroundColor': item.color}} >
                 <span className='grid-item-text'>{index}</span>
               </div>
             ))}
           </div>
         )}
       </div>
+
+      {/* END MEDIA DEMO */}
     </div>
   );
 }
