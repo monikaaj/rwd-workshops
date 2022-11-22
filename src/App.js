@@ -45,7 +45,7 @@ function App() {
       </div>
 
       <div className='input-wrapper'>
-        <input id='grid-demo' type='checkbox' onChange={() => setShowMediaDemo(!showGridDemo)} />
+        <input id='grid-demo' type='checkbox' onChange={() => setShowMediaDemo(!showMediaDemo)} />
         <label htmlFor='grid-demo'>Show Media demo</label>
       </div>
 
